@@ -27,7 +27,8 @@ void load_script(const char* filename, bool show_script = false)
         f = fopen(filename, "rb");
         if (!f)
         {
-            cerr << "error de apertura de " << filename << endl;
+            cerr << "Error al abrir el archivo: " << filename << endl;
+            perror("fopen");
             return;
         }
 
@@ -46,12 +47,13 @@ void load_script(const char* filename, bool show_script = false)
             cout << ColorConsole::fg_blue << ColorConsole::bg_white;
             cout << script << endl;
         }
+
         consoleBox->new_text();
         consoleBox->set_text(script);
     }
     catch (...)
     {
-        cerr << "error durante la lectura del archivo" << endl;
+        cerr << "Error durante la lectura del archivo" << endl;
         if(f)
             fclose(f);
     }
