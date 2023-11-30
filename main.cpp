@@ -21,6 +21,14 @@ ConsoleBox *consoleBox = new ConsoleBox; // suponemos que ya está inicializado
 void load_script(const char* filename, bool show_script = false)
 {
     string script;
+
+    const char* fileExtension = strrchr(filename, '.');
+    if (fileExtension && strcmp(fileExtension, ".txt") != 0)
+    {
+        cerr << "Error: El archivo no es un archivo de texto (.txt)." << endl;
+        return;
+    }
+
     FILE* f = nullptr;
     try
     {
