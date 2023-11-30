@@ -22,6 +22,7 @@ void load_script(const char* filename, bool show_script = false)
 {
     string script;
 
+    // Averiguar si el archivo tiene extensión .txt
     const char* fileExtension = strrchr(filename, '.');
     if (fileExtension && strcmp(fileExtension, ".txt") != 0)
     {
@@ -36,7 +37,7 @@ void load_script(const char* filename, bool show_script = false)
         if (!f)
         {
             cerr << "Error al abrir el archivo: " << filename << endl;
-            perror("fopen");
+            perror("fopen"); // Imprime el error
             return;
         }
 
@@ -75,6 +76,7 @@ void load_script()
     load_script(filename, true);
 }
 
+// Uso:
 int main()
 {
     load_script();
